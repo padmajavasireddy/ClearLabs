@@ -1,0 +1,62 @@
+{
+	"info": {
+		"_postman_id": "afe85398-2d4a-4b14-bfe4-89614a0a4ec7",
+		"name": "WeatherAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "weather tests",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5a51b5cd-a9c8-4173-a2d1-49e660472902",
+						"exec": [
+							"tests[\"lon\"]=responseBody.has(\"-0.13\");\r",
+							"tests[\"lat\"]=responseBody.has(\"51.51\");\r",
+							"\r",
+							"tests[\"humidity\"]=responseBody.has(71);\r",
+							"\r",
+							"pm.test(\"Status code is 200\",function(){\r",
+							"   pm.response.to.have.status(pm.iterationData.get(\"Value\"));\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=b6907d289e10d714a6e88b30761fae22",
+					"protocol": "https",
+					"host": [
+						"samples",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"weather"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "London,uk"
+						},
+						{
+							"key": "appid",
+							"value": "b6907d289e10d714a6e88b30761fae22"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
